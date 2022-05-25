@@ -15,6 +15,7 @@ public class CRUDRepository {
 			pStatement.setString(1,log.getUsername());
 			pStatement.setString(2, log.getPassword());
 			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
