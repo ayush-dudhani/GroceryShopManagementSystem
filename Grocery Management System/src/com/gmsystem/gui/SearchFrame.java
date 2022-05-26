@@ -9,6 +9,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import com.gmsystem.dbrepo.CRUDRepository;
+import com.gmsystem.entity.Item;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -18,12 +22,14 @@ public class SearchFrame {
 
 	private JFrame frame;
 	private JLabel lblNewLabel;
-	private JTextField textField;
+	private JTextField textName;
 	private JTable table;
 
 	/**
 	 * Launch the application.
 	 */
+	private CRUDRepository crudRepo;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,6 +47,7 @@ public class SearchFrame {
 	 * Create the application.
 	 */
 	public SearchFrame() {
+		crudRepo = new CRUDRepository();
 		initialize();
 	}
 
@@ -67,11 +74,11 @@ public class SearchFrame {
 		lblNewLabel.setBounds(446, 10, 133, 17);
 		frame.getContentPane().add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setToolTipText("SEARCH");
-		textField.setBounds(395, 67, 348, 26);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		textName = new JTextField();
+		textName.setToolTipText("SEARCH");
+		textName.setBounds(395, 67, 348, 26);
+		frame.getContentPane().add(textName);
+		textName.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Search");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -90,5 +97,13 @@ public class SearchFrame {
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_2.setBounds(395, 117, 196, 26);
 		frame.getContentPane().add(lblNewLabel_2);
+	}
+	private void searchItem() {
+		String idstr = textName.getText();
+		
+		Item it = crudRepo.getAllData();
+		if(it != null) {
+			
+		}
 	}
 }

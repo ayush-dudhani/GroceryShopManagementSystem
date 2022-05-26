@@ -6,6 +6,12 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+
+import com.gmsystem.dbrepo.CRUDRepository;
+
+import java.awt.Font;
+import java.awt.Color;
 
 public class MenuFrame {
 
@@ -14,6 +20,7 @@ public class MenuFrame {
 	/**
 	 * Launch the application.
 	 */
+	private CRUDRepository crudRepo;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -26,11 +33,12 @@ public class MenuFrame {
 			}
 		});
 	}
-
+	
 	/**
 	 * Create the application.
 	 */
 	public MenuFrame() {
+		crudRepo = new CRUDRepository();
 		initialize();
 	}
 
@@ -44,31 +52,44 @@ public class MenuFrame {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("Search");
-		btnNewButton.setBounds(276, 140, 141, 33);
-		frame.getContentPane().add(btnNewButton);
-		
-		JButton btnExpiryReminder = new JButton("Expiry Reminder");
-		btnExpiryReminder.setBounds(276, 198, 141, 33);
-		frame.getContentPane().add(btnExpiryReminder);
-		
-		JButton btnNewButton_1_1 = new JButton("Quantity Reminder");
-		btnNewButton_1_1.setBounds(276, 258, 141, 33);
-		frame.getContentPane().add(btnNewButton_1_1);
-		
-		JButton btnNewButton_1_2 = new JButton("Stock Details");
-		btnNewButton_1_2.addActionListener(new ActionListener() {
+		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1_2.setBounds(276, 319, 141, 33);
-		frame.getContentPane().add(btnNewButton_1_2);
+		btnNewButton.setBounds(276, 130, 141, 33);
+		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnExpiryReminder = new JButton("Expiry Reminder");
+		btnExpiryReminder.setBounds(276, 187, 141, 33);
+		frame.getContentPane().add(btnExpiryReminder);
+		
+		JButton btnNewButton_1_1 = new JButton("Quantity Reminder");
+		btnNewButton_1_1.setBounds(276, 242, 141, 33);
+		frame.getContentPane().add(btnNewButton_1_1);
+		
+		JButton btnStockDetails = new JButton("Stock Details");
+		btnStockDetails.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				StockDetails sd = new StockDetails();
+				sd.main(null);
+				frame.setVisible(false);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.dispose();
+			}
+		});
+		btnStockDetails.setBounds(276, 296, 141, 33);
+		frame.getContentPane().add(btnStockDetails);
 		
 		JButton btnNewButton_1_2_1 = new JButton("Sales Record");
-		btnNewButton_1_2_1.setBounds(276, 378, 141, 33);
+		btnNewButton_1_2_1.setBounds(276, 352, 141, 33);
 		frame.getContentPane().add(btnNewButton_1_2_1);
 		
 		JButton btnNewButton_1_2_1_1 = new JButton("Change Password");
-		btnNewButton_1_2_1_1.setBounds(276, 439, 141, 33);
+		btnNewButton_1_2_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_1_2_1_1.setBounds(276, 405, 141, 33);
 		frame.getContentPane().add(btnNewButton_1_2_1_1);
 		
 		JButton btnNewButton_1_2_1_1_1 = new JButton("Exit");
@@ -76,7 +97,17 @@ public class MenuFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1_2_1_1_1.setBounds(276, 499, 141, 33);
+		btnNewButton_1_2_1_1_1.setBounds(276, 459, 141, 33);
 		frame.getContentPane().add(btnNewButton_1_2_1_1_1);
+		
+		JButton btnNewButton_1_1_1 = new JButton("Add Item");
+		btnNewButton_1_1_1.setBounds(276, 78, 141, 33);
+		frame.getContentPane().add(btnNewButton_1_1_1);
+		
+		JLabel lblNewLabel = new JLabel("Welcome Manager !");
+		lblNewLabel.setForeground(Color.RED);
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		lblNewLabel.setBounds(276, 26, 134, 28);
+		frame.getContentPane().add(lblNewLabel);
 	}
 }

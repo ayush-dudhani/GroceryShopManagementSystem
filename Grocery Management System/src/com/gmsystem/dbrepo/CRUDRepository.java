@@ -2,6 +2,7 @@ package com.gmsystem.dbrepo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.gmsystem.entity.login;
@@ -20,5 +21,21 @@ public class CRUDRepository {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public ResultSet getAllData() {
+		Connection con = dbConnection.getConnection();
+		String sql = "select * from gmsystem_db.itemdata";
+		
+		try {
+			PreparedStatement pstatement = con.prepareStatement(sql);
+			ResultSet result = pstatement.executeQuery();
+			return result;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 }
