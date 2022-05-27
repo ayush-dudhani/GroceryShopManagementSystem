@@ -77,7 +77,7 @@ public class MainFrame {
 	
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1111, 545);
+		frame.setBounds(100, 100, 1330, 770);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -90,7 +90,7 @@ public class MainFrame {
 		panel.setBackground(new Color(204, 102, 51));
 		panel.setForeground(Color.BLACK);
 		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Log In", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, new Color(102, 204, 255)));
-		panel.setBounds(218, 81, 637, 376);
+		panel.setBounds(218, 81, 665, 388);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -152,18 +152,18 @@ public class MainFrame {
 		
 		JCheckBox chkbxShowPass = new JCheckBox("Show Password");
 		chkbxShowPass.setBackground(new Color(204, 102, 51));
-		chkbxShowPass.setBounds(435, 189, 135, 21);
+		chkbxShowPass.setBounds(421, 189, 123, 21);
 		panel.add(chkbxShowPass);
-		private void chkbxShowPassActionPerformed(java.awt.event.ActionEvent evt) {  
-
-			   if (lihat.isSelected()) {
-			      password.setEchoChar((char)0); //password = JPasswordField
-			   } else {
-			      password.setEchoChar('*');
-			   }
-			}
 		
-	}
+		chkbxShowPass.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		if (chkbxShowPass.isSelected()) {
+		      passwordField.setEchoChar((char)0); //password = JPasswordField
+		   } else {
+		      passwordField.setEchoChar('*');
+		   }
+		 }
+	});
 	
 	
-}
+}}
