@@ -11,6 +11,10 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.CardLayout;
 import javax.swing.border.TitledBorder;
+
+import com.gmsystem.dbrepo.CRUDRepository;
+import com.gmsystem.entity.login;
+
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import javax.swing.JScrollPane;
@@ -25,6 +29,7 @@ import javax.swing.JList;
 import javax.swing.AbstractListModel;
 import javax.swing.JTextPane;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
 
 public class MainFrame {
 
@@ -34,6 +39,9 @@ public class MainFrame {
 	/**
 	 * Launch the application.
 	 */
+	private CRUDRepository crudRepo;
+	private String currentUser;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -50,13 +58,23 @@ public class MainFrame {
 	/**
 	 * Create the application.
 	 */
+	
 	public MainFrame() {
+		crudRepo = new CRUDRepository();
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	public static String toString(char[] a)
+    {
+        // Creating an object of String class
+        String string = String.valueOf(a);
+ 
+        return string;
+    }
+	
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1111, 545);
@@ -94,18 +112,37 @@ public class MainFrame {
 		panel.add(labelPassword);
 		
 		JButton btnLogin = new JButton("Login");
-		btnLogin.setBackground(Color.BLACK);
+		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnLogin.setBackground(Color.WHITE);
 		btnLogin.setForeground(Color.BLACK);
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
+				char[] pass = passwordField.getPassword();
+				String user = (String) dropdownMenu.getItemAt(dropdownMenu.getSelectedIndex());
+				login l = crudRepo.getLogin(user, MainFrame.toString(pass));
+				if(l!=null) {
+					if(user.equals("Manager")) {
+						MenuFrame mf = new MenuFrame();
+						mf.main(null);
+						frame.setVisible(false);
+						frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+						frame.dispose();
+					}
+					else {
+						MenuFrameStaff mf = new MenuFrameStaff();
+						mf.main(null);
+						frame.setVisible(false);
+						frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+						frame.dispose();
+					}
+					
+					}
+				}	
+					
+					
 		});
 		btnLogin.setBounds(285, 216, 153, 30);
 		panel.add(btnLogin);
-		
-		JLabel forgotpassword = new JLabel("Forgot Password?");
-		forgotpassword.setBounds(441, 193, 91, 13);
-		panel.add(forgotpassword);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBackground(Color.WHITE);
@@ -113,10 +150,20 @@ public class MainFrame {
 		passwordField.setBounds(285, 153, 247, 30);
 		panel.add(passwordField);
 		
-		JLabel lblNewLabel = new JLabel("\r\n");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel.setBounds(10, 21, 325, 345);
-		panel.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon(MainFrame.class.getResource("/com/gmsystem/gui/free-user-login-icon-305-thumb.png")));
+		JCheckBox chkbxShowPass = new JCheckBox("Show Password");
+		chkbxShowPass.setBackground(new Color(204, 102, 51));
+		chkbxShowPass.setBounds(435, 189, 135, 21);
+		panel.add(chkbxShowPass);
+		private void chkbxShowPassActionPerformed(java.awt.event.ActionEvent evt) {  
+
+			   if (lihat.isSelected()) {
+			      password.setEchoChar((char)0); //password = JPasswordField
+			   } else {
+			      password.setEchoChar('*');
+			   }
+			}
+		
 	}
+	
+	
 }
