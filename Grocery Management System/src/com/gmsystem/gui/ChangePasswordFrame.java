@@ -105,7 +105,7 @@ public class ChangePasswordFrame {
 				ChangePass("Manager");
 			}
 		});
-		btnConfirm.setBounds(343, 454, 145, 49);
+		btnConfirm.setBounds(473, 454, 145, 49);
 		frame.getContentPane().add(btnConfirm);
 		
 		JLabel lblManager = new JLabel("MANAGER");
@@ -113,6 +113,19 @@ public class ChangePasswordFrame {
 		lblManager.setHorizontalAlignment(SwingConstants.CENTER);
 		lblManager.setBounds(359, 46, 174, 21);
 		frame.getContentPane().add(lblManager);
+		
+		JButton btnBack = new JButton("BACK");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuFrame mf = new MenuFrame();
+				mf.main(null);
+				frame.setVisible(false);
+				frame.dispose();
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			}
+		});
+		btnBack.setBounds(247, 454, 145, 49);
+		frame.getContentPane().add(btnBack);
 	}
 	
 	private void ChangePass(String str) {
@@ -122,9 +135,13 @@ public class ChangePasswordFrame {
 		
 		if(crudRepo.getLogin(str, mf.toString(oldPass)) != null){
 			if(mf.toString(newPass).equals(newPassConfirm)) {
+				int input = JOptionPane.showConfirmDialog(frame, "Are You Sure ?", "Confirmation",JOptionPane.OK_CANCEL_OPTION);
+				if(input == 0) {
 				login p = new login(str, newPassConfirm);
 				String result = crudRepo.changePassword(p);
 				JOptionPane.showMessageDialog(null, result);
+				
+				}
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "Password doesn't match !");

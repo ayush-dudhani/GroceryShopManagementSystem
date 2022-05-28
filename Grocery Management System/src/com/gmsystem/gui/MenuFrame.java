@@ -106,8 +106,8 @@ public class MenuFrame {
 		JButton btnNewButton_1_2_1_1_1 = new JButton("LOG OUT");
 		btnNewButton_1_2_1_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int input = JOptionPane.showConfirmDialog(frame, "Are you sure to Log Out Manager ?","Confirmation",JOptionPane.OK_CANCEL_OPTION,JOptionPane.ABORT);
-				if(input==1) {
+				int input = JOptionPane.showConfirmDialog(frame, "Are you sure to Log Out Manager ?","Confirmation",JOptionPane.OK_CANCEL_OPTION);
+				if(input==0) {
 					MainFrame sd = new MainFrame();
 					sd.main(null);
 					frame.setVisible(false);

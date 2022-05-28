@@ -120,8 +120,8 @@ public class MenuFrameStaff {
 		JButton btnExit = new JButton("LOG OUT");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int input = JOptionPane.showConfirmDialog(frame, "Are you sure to Log Out Staff ?","Confirmation",JOptionPane.OK_CANCEL_OPTION,JOptionPane.ABORT);
-				if(input==1) {
+				int input = JOptionPane.showConfirmDialog(frame, "Are you sure to Log Out Staff ?","Confirmation",JOptionPane.OK_CANCEL_OPTION);
+				if(input==0) {
 					MainFrame sd = new MainFrame();
 					sd.main(null);
 					frame.setVisible(false);

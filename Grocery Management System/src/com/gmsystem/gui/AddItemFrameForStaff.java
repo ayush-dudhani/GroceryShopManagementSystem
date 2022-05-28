@@ -26,7 +26,7 @@ import java.util.Calendar;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import java.util.Calendar;
-public class AddItemFrame {
+public class AddItemFrameForStaff {
 
 	private JFrame frame;
 	private JTextField txtName;
@@ -45,7 +45,7 @@ public class AddItemFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AddItemFrame window = new AddItemFrame();
+					AddItemFrameForStaff window = new AddItemFrameForStaff();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +58,7 @@ public class AddItemFrame {
 	 * Create the application.
 	 */
 	
-	public AddItemFrame() {
+	public AddItemFrameForStaff() {
 		crudRepo = new CRUDRepository();
 		initialize();
 	}
@@ -167,7 +167,7 @@ public class AddItemFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuFrame mf = new MenuFrame();
+				MenuFrameStaff mf = new MenuFrameStaff();
 				mf.main(null);
 				frame.setVisible(false);
 				frame.dispose();

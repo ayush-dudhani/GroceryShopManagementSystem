@@ -26,7 +26,7 @@ import javax.swing.JTabbedPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class SearchFrame {
+public class SearchFrameForStaff {
 
 	private JFrame frame;
 	private JLabel lblNewLabel;
@@ -44,7 +44,7 @@ public class SearchFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SearchFrame window = new SearchFrame();
+					SearchFrameForStaff window = new SearchFrameForStaff();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -56,7 +56,7 @@ public class SearchFrame {
 	/**
 	 * Create the application.
 	 */
-	public SearchFrame() {
+	public SearchFrameForStaff() {
 		crudRepo = new CRUDRepository();
 		initialize();
 	}
@@ -119,7 +119,7 @@ public class SearchFrame {
 		btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuFrame mf = new MenuFrame();
+				MenuFrameStaff mf = new MenuFrameStaff();
 				mf.main(null);
 				frame.setVisible(false);
 				frame.dispose();
