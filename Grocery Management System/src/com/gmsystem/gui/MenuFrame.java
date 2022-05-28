@@ -52,8 +52,8 @@ public class MenuFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("Search");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnSearch = new JButton("Search");
+		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SearchFrame sd = new SearchFrame();
 				sd.main(null);
@@ -62,16 +62,34 @@ public class MenuFrame {
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(276, 130, 141, 33);
-		frame.getContentPane().add(btnNewButton);
+		btnSearch.setBounds(276, 130, 141, 33);
+		frame.getContentPane().add(btnSearch);
 		
 		JButton btnExpiryReminder = new JButton("Expiry Reminder");
+		btnExpiryReminder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ExpiryReminder xr = new ExpiryReminder();
+				xr.main(null);
+				frame.setVisible(false);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.dispose();
+			}
+		});
 		btnExpiryReminder.setBounds(276, 187, 141, 33);
 		frame.getContentPane().add(btnExpiryReminder);
 		
-		JButton btnNewButton_1_1 = new JButton("Quantity Reminder");
-		btnNewButton_1_1.setBounds(276, 242, 141, 33);
-		frame.getContentPane().add(btnNewButton_1_1);
+		JButton btnQuantityReminder = new JButton("Quantity Reminder");
+		btnQuantityReminder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				QuantityReminder qr = new QuantityReminder();
+				qr.main(null);
+				frame.setVisible(false);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.dispose();
+			}
+		});
+		btnQuantityReminder.setBounds(276, 242, 141, 33);
+		frame.getContentPane().add(btnQuantityReminder);
 		
 		JButton btnStockDetails = new JButton("Stock Details");
 		btnStockDetails.addActionListener(new ActionListener() {
@@ -86,12 +104,12 @@ public class MenuFrame {
 		btnStockDetails.setBounds(276, 296, 141, 33);
 		frame.getContentPane().add(btnStockDetails);
 		
-		JButton btnNewButton_1_2_1 = new JButton("Sales Record");
-		btnNewButton_1_2_1.setBounds(276, 352, 141, 33);
-		frame.getContentPane().add(btnNewButton_1_2_1);
+		JButton btnSalesRecord = new JButton("Sales Record");
+		btnSalesRecord.setBounds(276, 352, 141, 33);
+		frame.getContentPane().add(btnSalesRecord);
 		
-		JButton btnNewButton_1_2_1_1 = new JButton("Change Password");
-		btnNewButton_1_2_1_1.addActionListener(new ActionListener() {
+		JButton btnChangePass = new JButton("Change Password");
+		btnChangePass.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ChangePasswordFrame sd = new ChangePasswordFrame();
 				sd.main(null);
@@ -100,11 +118,11 @@ public class MenuFrame {
 				frame.dispose();
 			}
 		});
-		btnNewButton_1_2_1_1.setBounds(276, 405, 141, 33);
-		frame.getContentPane().add(btnNewButton_1_2_1_1);
+		btnChangePass.setBounds(276, 405, 141, 33);
+		frame.getContentPane().add(btnChangePass);
 		
-		JButton btnNewButton_1_2_1_1_1 = new JButton("LOG OUT");
-		btnNewButton_1_2_1_1_1.addActionListener(new ActionListener() {
+		JButton btnLogOut = new JButton("LOG OUT");
+		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int input = JOptionPane.showConfirmDialog(frame, "Are you sure to Log Out Manager ?","Confirmation",JOptionPane.OK_CANCEL_OPTION);
 				if(input==0) {
@@ -116,11 +134,11 @@ public class MenuFrame {
 				}
 			}
 		});
-		btnNewButton_1_2_1_1_1.setBounds(276, 459, 141, 33);
-		frame.getContentPane().add(btnNewButton_1_2_1_1_1);
+		btnLogOut.setBounds(276, 459, 141, 33);
+		frame.getContentPane().add(btnLogOut);
 		
-		JButton btnNewButton_1_1_1 = new JButton("Add Item");
-		btnNewButton_1_1_1.addActionListener(new ActionListener() {
+		JButton btnAddItem = new JButton("Add Item");
+		btnAddItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AddItemFrame sd = new AddItemFrame();
 				sd.main(null);
@@ -129,13 +147,13 @@ public class MenuFrame {
 				frame.dispose();
 			}
 		});
-		btnNewButton_1_1_1.setBounds(276, 78, 141, 33);
-		frame.getContentPane().add(btnNewButton_1_1_1);
+		btnAddItem.setBounds(276, 78, 141, 33);
+		frame.getContentPane().add(btnAddItem);
 		
-		JLabel lblNewLabel = new JLabel("Welcome Manager !");
-		lblNewLabel.setForeground(Color.RED);
-		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		lblNewLabel.setBounds(276, 26, 134, 28);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel lblWelcomeManager = new JLabel("Welcome Manager !");
+		lblWelcomeManager.setForeground(Color.RED);
+		lblWelcomeManager.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		lblWelcomeManager.setBounds(276, 26, 134, 28);
+		frame.getContentPane().add(lblWelcomeManager);
 	}
 }

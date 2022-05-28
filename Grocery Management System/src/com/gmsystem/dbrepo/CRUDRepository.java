@@ -171,15 +171,39 @@ public class CRUDRepository {
 			e.printStackTrace();
 			return "Error Occured";
 		}
-		
-		
 	}
 	
 	
+	public ResultSet expiryReminder()
+	{
+		Connection connection=dbConnection.getConnection();
+		String sql="SELECT item_id,item_name,quantity,exp_date,category FROM gmsystem_db.itemdata WHERE DATEDIFF(exp_date, CURDATE()) BETWEEN 0 AND 14";
+		 
+		try {
+			 PreparedStatement pStatement=connection.prepareStatement(sql);
+			 ResultSet resultSet=pStatement.executeQuery();
+			 return resultSet;		
+		 }
+              catch(SQLException e){
+              e.printStackTrace();
+              return null;
+              } 
+	}
 	
-	
-	
-	
-	
+	public ResultSet QuantityReminder()
+	{	
+		Connection connection=dbConnection.getConnection();
+		String sql="select item_id,item_name,category,quantity from gmsystem_db.itemdata where quantity<=5";
+		 
+		try {
+			 PreparedStatement pStatement=connection.prepareStatement(sql);
+			 ResultSet resultSet=pStatement.executeQuery();
+                      return resultSet;
+                      
+		 }
+              catch(SQLException e){
+              e.printStackTrace();
+              return null;} 
+	}
 	
 }

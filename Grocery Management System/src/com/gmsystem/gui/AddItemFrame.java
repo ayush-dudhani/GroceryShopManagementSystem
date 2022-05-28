@@ -41,7 +41,7 @@ public class AddItemFrame {
 	 * Launch the application.
 	 */
 	private CRUDRepository crudRepo;
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

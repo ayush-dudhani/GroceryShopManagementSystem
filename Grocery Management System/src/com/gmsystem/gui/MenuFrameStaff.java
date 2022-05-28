@@ -97,10 +97,28 @@ public class MenuFrameStaff {
 		frame.getContentPane().add(btnStockDetails);
 		
 		JButton btnExpiryReminder = new JButton("Expiry Reminder");
+		btnExpiryReminder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ExpiryReminder xr = new ExpiryReminder();
+				xr.main(null);
+				frame.setVisible(false);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.dispose();
+			}
+		});
 		btnExpiryReminder.setBounds(501, 364, 144, 34);
 		frame.getContentPane().add(btnExpiryReminder);
 		
 		JButton btnQuantityReminder = new JButton("Quantity Reminder");
+		btnQuantityReminder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				QuantityReminder qr = new QuantityReminder();
+				qr.main(null);
+				frame.setVisible(false);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.dispose();
+			}
+		});
 		btnQuantityReminder.setBounds(501, 420, 144, 34);
 		frame.getContentPane().add(btnQuantityReminder);
 		

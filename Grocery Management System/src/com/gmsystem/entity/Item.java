@@ -32,6 +32,25 @@ public class Item {
 		this.price = price;
 		this.category = category;
 	}
+	
+
+	public Item(int item_id, String item_name, String manu_date, int quantity, String category) {
+		super();
+		this.item_id = item_id;
+		this.item_name = item_name;
+		this.manu_date = manu_date;
+		this.quantity = quantity;
+		this.category = category;
+	}
+
+	public Item(int item_id, String item_name, int quantity, String exp_date, String category) {
+		super();
+		this.item_id = item_id;
+		this.item_name = item_name;
+		this.exp_date = exp_date;
+		this.quantity = quantity;
+		this.category = category;
+	}
 
 	public int getSr_no() {
 		return sr_no;
