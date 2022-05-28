@@ -8,29 +8,38 @@ import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.sql.ResultSet;
+
 import javax.swing.SwingConstants;
 
 import com.gmsystem.dbrepo.CRUDRepository;
 import com.gmsystem.entity.Item;
+import com.mysql.cj.protocol.Resultset;
+
+import net.proteanit.sql.DbUtils;
 
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTable;
+import javax.swing.JTabbedPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SearchFrame {
 
 	private JFrame frame;
 	private JLabel lblNewLabel;
 	private JTextField textName;
-	private JTable table;
 
 	/**
 	 * Launch the application.
 	 */
 	private CRUDRepository crudRepo;
+	private JTable table;
+	private JTextField textField;
 	
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -60,13 +69,6 @@ public class SearchFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(68, 179, 939, 295);
-		frame.getContentPane().add(scrollPane);
-		
-		table = new JTable();
-		scrollPane.setViewportView(table);
-		
 		lblNewLabel = new JLabel("SEARCH");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -80,30 +82,52 @@ public class SearchFrame {
 		frame.getContentPane().add(textName);
 		textName.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Search");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnNewButton.setBounds(753, 66, 99, 26);
-		frame.getContentPane().add(btnNewButton);
+		JButton lblSearch = new JButton("Search");
+		lblSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				searchItem();
+			}
+		});
+		lblSearch.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblSearch.setBounds(753, 66, 99, 26);
+		frame.getContentPane().add(lblSearch);
 		
-		JLabel lblNewLabel_1 = new JLabel("Name Of Item :");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNewLabel_1.setForeground(new Color(0, 0, 0));
-		lblNewLabel_1.setBounds(205, 66, 114, 26);
-		frame.getContentPane().add(lblNewLabel_1);
+		JLabel lblNameOfItem = new JLabel("Name Of Item :");
+		lblNameOfItem.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNameOfItem.setForeground(new Color(0, 0, 0));
+		lblNameOfItem.setBounds(205, 66, 114, 26);
+		frame.getContentPane().add(lblNameOfItem);
 		
-		JLabel lblNewLabel_2 = new JLabel("Item Found !!");
-		lblNewLabel_2.setBackground(new Color(255, 218, 185));
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_2.setBounds(395, 117, 196, 26);
-		frame.getContentPane().add(lblNewLabel_2);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(143, 168, 792, 295);
+		frame.getContentPane().add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		
+		textField = new JTextField();
+		textField.setHorizontalAlignment(SwingConstants.CENTER);
+		textField.setBackground(Color.WHITE);
+		textField.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		textField.setForeground(Color.RED);
+		textField.setEditable(false);
+		textField.setBounds(373, 119, 266, 26);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
 	}
+	
+	
 	private void searchItem() {
-		String idstr = textName.getText();
-		
-		Item it = crudRepo.getAllData();
+		String namestr = textName.getText();
+		Item it = null;
+		it = crudRepo.getitemdata(namestr);
 		if(it != null) {
-			
+			textField.setText("Item found !!");
+			ResultSet rs= crudRepo.showitemdata(namestr);
+			table.setModel(DbUtils.resultSetToTableModel(rs));
+		}
+		else {
+			textField.setText("Item Not Found, Check Spellings Please");
 		}
 	}
 }

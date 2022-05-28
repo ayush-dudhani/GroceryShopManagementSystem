@@ -26,6 +26,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
 import javax.swing.JTextPane;
 import javax.swing.ImageIcon;
@@ -94,7 +95,7 @@ public class MainFrame {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JComboBox dropdownMenu = new JComboBox();
+		JComboBox dropdownMenu =  new JComboBox();
 		dropdownMenu.setBackground(new Color(102, 204, 255));
 		dropdownMenu.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		dropdownMenu.setModel(new DefaultComboBoxModel(new String[] {"Manager", "Staff"}));
@@ -120,6 +121,10 @@ public class MainFrame {
 				char[] pass = passwordField.getPassword();
 				String user = (String) dropdownMenu.getItemAt(dropdownMenu.getSelectedIndex());
 				login l = crudRepo.getLogin(user, MainFrame.toString(pass));
+				if(MainFrame.toString(pass).isEmpty()){
+				     JOptionPane.showMessageDialog(null,"Password Field is empty"); 
+				  }
+				else {
 				if(l!=null) {
 					if(user.equals("Manager")) {
 						MenuFrame mf = new MenuFrame();
@@ -137,6 +142,11 @@ public class MainFrame {
 					}
 					
 					}
+				else {
+					JOptionPane.showMessageDialog(null,"Incorrect Password !"); 
+					
+				}
+				}
 				}	
 					
 					

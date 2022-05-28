@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -53,10 +54,28 @@ public class MenuFrameStaff {
 		frame.getContentPane().add(lblNewLabel);
 		
 		JButton btnAddItem = new JButton("Add Item");
+		btnAddItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddItemFrame sd = new AddItemFrame();
+				sd.main(null);
+				frame.setVisible(false);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.dispose();
+			}
+		});
 		btnAddItem.setBounds(501, 124, 144, 34);
 		frame.getContentPane().add(btnAddItem);
 		
 		JButton btnSearch = new JButton("Search");
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SearchFrame sd = new SearchFrame();
+				sd.main(null);
+				frame.setVisible(false);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.dispose();
+			}
+		});
 		btnSearch.setBounds(501, 183, 144, 34);
 		frame.getContentPane().add(btnSearch);
 		
@@ -86,10 +105,31 @@ public class MenuFrameStaff {
 		frame.getContentPane().add(btnQuantityReminder);
 		
 		JButton btnChangePassword = new JButton("Change Password");
+		btnChangePassword.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ChangePasswordFrameForStaff sd = new ChangePasswordFrameForStaff();
+				sd.main(null);
+				frame.setVisible(false);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.dispose();
+			}
+		});
 		btnChangePassword.setBounds(501, 488, 144, 34);
 		frame.getContentPane().add(btnChangePassword);
 		
-		JButton btnExit = new JButton("EXIT");
+		JButton btnExit = new JButton("LOG OUT");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int input = JOptionPane.showConfirmDialog(frame, "Are you sure to Log Out Staff ?","Confirmation",JOptionPane.OK_CANCEL_OPTION,JOptionPane.ABORT);
+				if(input==1) {
+					MainFrame sd = new MainFrame();
+					sd.main(null);
+					frame.setVisible(false);
+					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					frame.dispose();
+				}
+			}
+		});
 		btnExit.setBounds(501, 550, 144, 34);
 		frame.getContentPane().add(btnExit);
 	}

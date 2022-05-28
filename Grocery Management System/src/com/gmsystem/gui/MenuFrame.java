@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import com.gmsystem.dbrepo.CRUDRepository;
 
@@ -54,6 +55,11 @@ public class MenuFrame {
 		JButton btnNewButton = new JButton("Search");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				SearchFrame sd = new SearchFrame();
+				sd.main(null);
+				frame.setVisible(false);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.dispose();
 			}
 		});
 		btnNewButton.setBounds(276, 130, 141, 33);
@@ -87,20 +93,42 @@ public class MenuFrame {
 		JButton btnNewButton_1_2_1_1 = new JButton("Change Password");
 		btnNewButton_1_2_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ChangePasswordFrame sd = new ChangePasswordFrame();
+				sd.main(null);
+				frame.setVisible(false);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.dispose();
 			}
 		});
 		btnNewButton_1_2_1_1.setBounds(276, 405, 141, 33);
 		frame.getContentPane().add(btnNewButton_1_2_1_1);
 		
-		JButton btnNewButton_1_2_1_1_1 = new JButton("Exit");
+		JButton btnNewButton_1_2_1_1_1 = new JButton("LOG OUT");
 		btnNewButton_1_2_1_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int input = JOptionPane.showConfirmDialog(frame, "Are you sure to Log Out Manager ?","Confirmation",JOptionPane.OK_CANCEL_OPTION,JOptionPane.ABORT);
+				if(input==1) {
+					MainFrame sd = new MainFrame();
+					sd.main(null);
+					frame.setVisible(false);
+					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					frame.dispose();
+				}
 			}
 		});
 		btnNewButton_1_2_1_1_1.setBounds(276, 459, 141, 33);
 		frame.getContentPane().add(btnNewButton_1_2_1_1_1);
 		
 		JButton btnNewButton_1_1_1 = new JButton("Add Item");
+		btnNewButton_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddItemFrame sd = new AddItemFrame();
+				sd.main(null);
+				frame.setVisible(false);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.dispose();
+			}
+		});
 		btnNewButton_1_1_1.setBounds(276, 78, 141, 33);
 		frame.getContentPane().add(btnNewButton_1_1_1);
 		
