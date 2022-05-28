@@ -65,7 +65,7 @@ public class ChangePasswordFrameForStaff {
 		lblChangePass.setForeground(Color.RED);
 		lblChangePass.setHorizontalAlignment(SwingConstants.CENTER);
 		lblChangePass.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblChangePass.setBounds(298, 31, 329, 49);
+		lblChangePass.setBounds(299, 58, 329, 49);
 		frame.getContentPane().add(lblChangePass);
 		
 		JLabel lblCurrentPassword = new JLabel("Current Password :");
@@ -120,6 +120,12 @@ public class ChangePasswordFrameForStaff {
 		});
 		btnBack.setBounds(261, 458, 145, 49);
 		frame.getContentPane().add(btnBack);
+		
+		JLabel lblNewLabel = new JLabel("STAFF");
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(382, 38, 158, 41);
+		frame.getContentPane().add(lblNewLabel);
 	}
 	
 	private void ChangePass(String str) {
@@ -128,6 +134,7 @@ public class ChangePasswordFrameForStaff {
 		String newPassConfirm = txtNewPass.getText();
 		
 		if(crudRepo.getLogin(str, mf.toString(oldPass)) != null){
+			if(mf.toString(newPass).isEmpty()!=true && newPassConfirm.isEmpty()!=true && mf.toString(oldPass).isEmpty()!=true) {
 			if(mf.toString(newPass).equals(newPassConfirm)) {
 				int input = JOptionPane.showConfirmDialog(frame, "Are You Sure ?", "Confirmation",JOptionPane.OK_CANCEL_OPTION);
 				if(input == 0) {
@@ -140,6 +147,11 @@ public class ChangePasswordFrameForStaff {
 				JOptionPane.showMessageDialog(null, "Password doesn't match !");
 			}
 		}
+			else {
+				JOptionPane.showMessageDialog(null,"One or More fields are empty !");
+			}
+			}
+		
 		else {
 			JOptionPane.showMessageDialog(null, "Invalid Password !");
 		}

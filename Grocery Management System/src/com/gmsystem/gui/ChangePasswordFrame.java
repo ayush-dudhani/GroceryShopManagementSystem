@@ -134,19 +134,24 @@ public class ChangePasswordFrame {
 		String newPassConfirm = txtNewPass.getText();
 		
 		if(crudRepo.getLogin(str, mf.toString(oldPass)) != null){
+			if(mf.toString(newPass).isEmpty()!=true && newPassConfirm.isEmpty()!=true && mf.toString(oldPass).isEmpty()!=true) {
 			if(mf.toString(newPass).equals(newPassConfirm)) {
 				int input = JOptionPane.showConfirmDialog(frame, "Are You Sure ?", "Confirmation",JOptionPane.OK_CANCEL_OPTION);
 				if(input == 0) {
 				login p = new login(str, newPassConfirm);
 				String result = crudRepo.changePassword(p);
 				JOptionPane.showMessageDialog(null, result);
-				
 				}
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "Password doesn't match !");
 			}
 		}
+			else {
+				JOptionPane.showMessageDialog(null,"One or More fields are empty !");
+			}
+			}
+		
 		else {
 			JOptionPane.showMessageDialog(null, "Invalid Password !");
 		}
