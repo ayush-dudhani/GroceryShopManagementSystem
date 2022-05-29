@@ -105,6 +105,15 @@ public class MenuFrame {
 		frame.getContentPane().add(btnStockDetails);
 		
 		JButton btnSalesRecord = new JButton("Sales Record");
+		btnSalesRecord.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SalesRecordFrame sr = new SalesRecordFrame();
+				sr.main(null);
+				frame.dispose();
+				frame.setVisible(false);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			}
+		});
 		btnSalesRecord.setBounds(276, 352, 141, 33);
 		frame.getContentPane().add(btnSalesRecord);
 		

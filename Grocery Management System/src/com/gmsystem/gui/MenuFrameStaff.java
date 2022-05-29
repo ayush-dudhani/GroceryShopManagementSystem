@@ -80,6 +80,15 @@ public class MenuFrameStaff {
 		frame.getContentPane().add(btnSearch);
 		
 		JButton btnSalesEntry = new JButton("Sales Entry");
+		btnSalesEntry.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddSalesEntryFrame asef = new AddSalesEntryFrame();
+				asef.main(null);
+				frame.setVisible(false);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.dispose();	
+			}
+		});
 		btnSalesEntry.setBounds(501, 245, 144, 34);
 		frame.getContentPane().add(btnSalesEntry);
 		
