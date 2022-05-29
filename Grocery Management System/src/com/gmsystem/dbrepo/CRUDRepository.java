@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.gmsystem.entity.Item;
+import com.gmsystem.entity.Sales;
 import com.gmsystem.entity.login;
 import com.mysql.cj.protocol.Resultset;
 
@@ -193,7 +194,7 @@ public class CRUDRepository {
 	public ResultSet QuantityReminder()
 	{	
 		Connection connection=dbConnection.getConnection();
-		String sql="select item_id,item_name,category,quantity from gmsystem_db.itemdata where quantity<=5";
+		String sql="select item_id,item_name,quantity,category from gmsystem_db.itemdata where quantity<=5";
 		 
 		try {
 			 PreparedStatement pStatement=connection.prepareStatement(sql);
@@ -204,6 +205,55 @@ public class CRUDRepository {
               catch(SQLException e){
               e.printStackTrace();
               return null;} 
+	}
+	
+	public void addSalesEntry(Sales x) {
+		Connection connection=dbConnection.getConnection();
+		String sql = "insert into gmsystem_db.salesrecord (item_id,item_name,quantity_sold,total_amount,sold_date,category) values (?,?,?,?,?,?) ";
+		String sql3 = "update gmsystem_db.itemdata A INNER JOIN gmsystem_db.salesrecord B ON A.item_id=B.item_id set A.quantity=A.quantity-B.quantity_sold where item_id=?";
+		try {
+			PreparedStatement pStatement = connection.prepareStatement(sql);
+			
+			PreparedStatement pStatement3 = connection.prepareStatement(sql3);
+			
+			pStatement.setInt(1, x.getItem_id());
+			pStatement.setString(2, x.getItem_name());
+			pStatement.setInt(3,x.getQuantitySold());
+			pStatement.setFloat(4, fetchTotalAmount(x) );
+			pStatement.setString(5, x.getSold_date());
+			pStatement.setString(6, x.getCategory());
+			
+			pStatement3.setInt(1, x.getItem_id());
+			
+			pStatement.executeUpdate();
+			pStatement3.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public float fetchTotalAmount(Sales x) {
+		Connection connection=dbConnection.getConnection();
+		String sql2 = "select A.price*B.quantity_sold from gmsystem_db.itemdata A INNER JOIN gmsystem_db.salesrecord B where item_id=? ON A.item_id=B.item_id";
+		
+		try {
+			PreparedStatement pStatement2 = connection.prepareStatement(sql2);
+			pStatement2.setInt(1,x.getItem_id());
+			ResultSet rs = pStatement2.executeQuery();
+			float p = rs.getFloat(1);
+			return p;
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return (Float) null;
+		}
+		
+		
 	}
 	
 }

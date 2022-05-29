@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 
 
 
-public class StockDetails {
+public class StockDetailsForStaff {
 
 	private JFrame frame2;
 	private JTable table;
@@ -36,7 +36,7 @@ public class StockDetails {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					StockDetails window = new StockDetails();
+					StockDetailsForStaff window = new StockDetailsForStaff();
 					window.frame2.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,7 +48,7 @@ public class StockDetails {
 	/**
 	 * Create the application.
 	 */
-	public StockDetails() {
+	public StockDetailsForStaff() {
 		crudRepo = new CRUDRepository();
 		initialize();
 	}
@@ -79,7 +79,7 @@ public class StockDetails {
 		btnback = new JButton("Back");
 		btnback.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuFrame mf =new MenuFrame();
+				MenuFrameStaff mf =new MenuFrameStaff();
 				mf.main(null);
 				frame2.dispose();
 				frame2.setVisible(false);

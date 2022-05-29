@@ -86,7 +86,7 @@ public class MenuFrameStaff {
 		JButton btnStockDetails = new JButton("Stock Details");
 		btnStockDetails.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StockDetails sd = new StockDetails();
+				StockDetailsForStaff sd = new StockDetailsForStaff();
 				sd.main(null);
 				frame.setVisible(false);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
