@@ -31,6 +31,7 @@ import javax.swing.AbstractListModel;
 import javax.swing.JTextPane;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
+import javax.swing.border.LineBorder;
 
 public class MainFrame {
 
@@ -41,7 +42,6 @@ public class MainFrame {
 	 * Launch the application.
 	 */
 	private CRUDRepository crudRepo;
-	private String currentUser;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -78,42 +78,45 @@ public class MainFrame {
 	
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1330, 770);
+		frame.setBounds(100, 100, 1191, 792);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel title = new JLabel("Shop Management System");
-		title.setFont(new Font("Times New Roman", Font.BOLD, 17));
-		title.setBounds(407, 10, 206, 51);
-		frame.getContentPane().add(title);
-		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(204, 102, 51));
+		panel.setBackground(new Color(255, 0, 51));
 		panel.setForeground(Color.BLACK);
-		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Log In", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, new Color(102, 204, 255)));
-		panel.setBounds(218, 81, 665, 388);
+		panel.setBorder(null);
+		panel.setBounds(0, 0, 1191, 792);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
+		JLabel title = new JLabel("Shop Management System");
+		title.setForeground(Color.RED);
+		title.setHorizontalAlignment(SwingConstants.CENTER);
+		title.setBounds(351, 74, 564, 67);
+		panel.add(title);
+		title.setFont(new Font("Pristina", Font.BOLD, 40));
+		
 		JComboBox dropdownMenu =  new JComboBox();
-		dropdownMenu.setBackground(new Color(102, 204, 255));
+		dropdownMenu.setForeground(Color.RED);
+		dropdownMenu.setBackground(Color.WHITE);
 		dropdownMenu.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		dropdownMenu.setModel(new DefaultComboBoxModel(new String[] {"Manager", "Staff"}));
-		dropdownMenu.setBounds(285, 92, 247, 30);
+		dropdownMenu.setBounds(590, 239, 247, 30);
 		panel.add(dropdownMenu);
 		
 		JLabel labelUser = new JLabel("User :");
-		labelUser.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		labelUser.setBounds(184, 92, 56, 30);
+		labelUser.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		labelUser.setBounds(486, 239, 56, 30);
 		panel.add(labelUser);
 		
 		JLabel labelPassword = new JLabel("Password : ");
-		labelPassword.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		labelPassword.setBounds(184, 150, 91, 30);
+		labelPassword.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		labelPassword.setBounds(486, 296, 100, 30);
 		panel.add(labelPassword);
 		
 		JButton btnLogin = new JButton("Login");
-		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnLogin.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		btnLogin.setBackground(Color.WHITE);
 		btnLogin.setForeground(Color.BLACK);
 		btnLogin.addActionListener(new ActionListener() {
@@ -151,19 +154,27 @@ public class MainFrame {
 					
 					
 		});
-		btnLogin.setBounds(285, 216, 153, 30);
+		btnLogin.setBounds(590, 364, 153, 30);
 		panel.add(btnLogin);
 		
 		passwordField = new JPasswordField();
+		passwordField.setToolTipText("Password");
 		passwordField.setBackground(Color.WHITE);
-		passwordField.setForeground(Color.BLACK);
-		passwordField.setBounds(285, 153, 247, 30);
+		passwordField.setForeground(Color.RED);
+		passwordField.setBounds(590, 299, 247, 30);
 		panel.add(passwordField);
 		
 		JCheckBox chkbxShowPass = new JCheckBox("Show Password");
-		chkbxShowPass.setBackground(new Color(204, 102, 51));
-		chkbxShowPass.setBounds(421, 189, 123, 21);
+		chkbxShowPass.setFont(new Font("Tahoma", Font.ITALIC, 14));
+		chkbxShowPass.setForeground(Color.BLACK);
+		chkbxShowPass.setBackground(Color.WHITE);
+		chkbxShowPass.setBounds(714, 337, 123, 21);
 		panel.add(chkbxShowPass);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\dudha\\Downloads\\undraw_secure_login_pdn4 (1).png"));
+		lblNewLabel.setBounds(62, 25, 1033, 712);
+		panel.add(lblNewLabel);
 		
 		chkbxShowPass.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

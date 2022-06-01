@@ -63,12 +63,12 @@ public class CRUDRepository {
 			ResultSet resultSet = pStatement.executeQuery();
 			Item items = null;
 			if (resultSet.next() == true) {
-				int item_id = resultSet.getInt(2);
-				String selectedName = resultSet.getString(3);
-				int quantity = resultSet.getInt(4);
-				float prices = resultSet.getFloat(5);
-				String manuf_date = resultSet.getString(6);
-				String category = resultSet.getString(8);
+				int item_id = resultSet.getInt(1);
+				String selectedName = resultSet.getString(2);
+				int quantity = resultSet.getInt(3);
+				float prices = resultSet.getFloat(4);
+				String manuf_date = resultSet.getString(5);
+				String category = resultSet.getString(6);
 				String exp_date = resultSet.getString(7);
 
 				items = new Item(item_id, selectedName, quantity, prices, manuf_date, exp_date, category);
@@ -106,13 +106,13 @@ public class CRUDRepository {
 			ResultSet resultSet = pStatement.executeQuery();
 			Item items = null;
 			if (resultSet.next() == true) {
-				int item_id = resultSet.getInt(2);
-				String selectedName = resultSet.getString(3);
-				int quantity = resultSet.getInt(4);
-				float prices = resultSet.getFloat(5);
-				String manuf_date = resultSet.getString(6);
-				String category = resultSet.getString(8);
-				String exp_date = resultSet.getString(7);
+				int item_id = resultSet.getInt(1);
+				String selectedName = resultSet.getString(2);
+				int quantity = resultSet.getInt(3);
+				float prices = resultSet.getFloat(4);
+				String manuf_date = resultSet.getString(5);
+				String category = resultSet.getString(7);
+				String exp_date = resultSet.getString(6);
 
 				items = new Item(item_id, selectedName, quantity, prices, manuf_date, exp_date, category);
 
@@ -128,17 +128,16 @@ public class CRUDRepository {
 	public String saveitemdata(Item items) {
 		Connection connection = dbConnection.getConnection();
 
-		String sql = "insert into itemdata (sr_no,item_id,item_name,quantity,price,manuf_date,category,exp_date)values(?,?,?,?,?,?,?,?)";
+		String sql = "insert into itemdata (item_id,item_name,quantity,price,manuf_date,category,exp_date)values(?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pStatement = connection.prepareStatement(sql);
-			pStatement.setInt(1, items.getSr_no());
-			pStatement.setInt(2, items.getItem_id());
-			pStatement.setString(3, items.getItem_name());
-			pStatement.setInt(4, items.getQuantity());
-			pStatement.setFloat(5, items.getPrice());
-			pStatement.setString(6, items.getManu_date());
-			pStatement.setString(7, items.getCategory());
-			pStatement.setString(8, items.getExp_date());
+			pStatement.setInt(1, items.getItem_id());
+			pStatement.setString(2, items.getItem_name());
+			pStatement.setInt(3, items.getQuantity());
+			pStatement.setFloat(4, items.getPrice());
+			pStatement.setString(5, items.getManu_date());
+			pStatement.setString(6, items.getCategory());
+			pStatement.setString(7, items.getExp_date());
 
 			int i = pStatement.executeUpdate();
 			System.out.println(i + " item record inserted...");
@@ -155,7 +154,7 @@ public class CRUDRepository {
 	public String saveItemtoDB(Item it) {
 		Connection connection = dbConnection.getConnection();
 
-		String sql = "insert into gmsystem_db.item_data (item_id,item_name,quantity,price,manuf_date,exp_date,category) values (?,?,?,?,?,?,?)";
+		String sql = "insert into gmsystem_db.itemdata (item_id,item_name,quantity,price,manuf_date,exp_date,category) values (?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pStatement = connection.prepareStatement(sql);
 			pStatement.setInt(1, it.getItem_id());
@@ -224,32 +223,6 @@ public class CRUDRepository {
 		}
 	}
 
-//	public void addSalesEntry(Sales x) {
-//		Connection connection = dbConnection.getConnection();
-//		String sql = "insert into gmsystem_db.salesrecord (item_id,item_name,quantity_sold,total_amount,sold_date,category) values (?,?,?,?,?,?) ";
-//		String sql3 = "update gmsystem_db.itemdata A INNER JOIN gmsystem_db.salesrecord B ON A.item_id=B.item_id set A.quantity=A.quantity-B.quantity_sold where item_id=?";
-//		try {
-//			PreparedStatement pStatement = connection.prepareStatement(sql);
-//
-//			PreparedStatement pStatement3 = connection.prepareStatement(sql3);
-//
-//			pStatement.setInt(1, x.getItem_id());
-//			pStatement.setString(2, x.getItem_name());
-//			pStatement.setInt(3, x.getQuantitySold());
-//			pStatement.setFloat(4, fetchTotalAmount(x.getItem_id()));
-//			pStatement.setString(5, x.getSold_date());
-//			pStatement.setString(6, x.getCategory());
-//
-//			pStatement3.setInt(1, x.getItem_id());
-//
-//			pStatement.executeUpdate();
-//			pStatement3.executeUpdate();
-//
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
 
 	public float fetchTotalAmount(int id) {
 		Connection connection = dbConnection.getConnection();

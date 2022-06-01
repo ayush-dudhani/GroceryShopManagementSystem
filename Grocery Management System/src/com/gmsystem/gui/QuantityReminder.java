@@ -96,6 +96,8 @@ public class QuantityReminder {
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		btnNewButton.setBounds(83, 46, 147, 31);
 		frame.getContentPane().add(btnNewButton);
+		
+		loadTable();
 	}
 	
 	private void loadTable() {

@@ -10,6 +10,8 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class MenuFrameStaff {
 
@@ -48,38 +50,42 @@ public class MenuFrameStaff {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Welcome Staff !");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		lblNewLabel.setForeground(Color.RED);
+		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(487, 73, 173, 27);
+		lblNewLabel.setBounds(443, 51, 315, 49);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JButton btnAddItem = new JButton("Add Item");
+		JButton btnAddItem = new JButton("ADD ITEM");
+		btnAddItem.setFont(new Font("Arial", Font.BOLD, 20));
 		btnAddItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddItemFrame sd = new AddItemFrame();
+				AddItemFrameForStaff sd = new AddItemFrameForStaff();
 				sd.main(null);
 				frame.setVisible(false);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.dispose();
 			}
 		});
-		btnAddItem.setBounds(501, 124, 144, 34);
+		btnAddItem.setBounds(473, 122, 259, 51);
 		frame.getContentPane().add(btnAddItem);
 		
-		JButton btnSearch = new JButton("Search");
+		JButton btnSearch = new JButton("SEARCH");
+		btnSearch.setFont(new Font("Arial", Font.BOLD, 20));
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SearchFrame sd = new SearchFrame();
+				SearchFrameForStaff sd = new SearchFrameForStaff();
 				sd.main(null);
 				frame.setVisible(false);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.dispose();
 			}
 		});
-		btnSearch.setBounds(501, 183, 144, 34);
+		btnSearch.setBounds(473, 183, 259, 49);
 		frame.getContentPane().add(btnSearch);
 		
-		JButton btnSalesEntry = new JButton("Sales Entry");
+		JButton btnSalesEntry = new JButton("SALES ENTRY");
+		btnSalesEntry.setFont(new Font("Arial", Font.BOLD, 20));
 		btnSalesEntry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AddSalesEntryFrame asef = new AddSalesEntryFrame();
@@ -89,10 +95,11 @@ public class MenuFrameStaff {
 				frame.dispose();	
 			}
 		});
-		btnSalesEntry.setBounds(501, 245, 144, 34);
+		btnSalesEntry.setBounds(473, 245, 259, 51);
 		frame.getContentPane().add(btnSalesEntry);
 		
-		JButton btnStockDetails = new JButton("Stock Details");
+		JButton btnStockDetails = new JButton("STOCK DETAILS");
+		btnStockDetails.setFont(new Font("Arial", Font.BOLD, 20));
 		btnStockDetails.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StockDetailsForStaff sd = new StockDetailsForStaff();
@@ -102,36 +109,39 @@ public class MenuFrameStaff {
 				frame.dispose();
 			}
 		});
-		btnStockDetails.setBounds(501, 306, 144, 34);
+		btnStockDetails.setBounds(473, 306, 259, 48);
 		frame.getContentPane().add(btnStockDetails);
 		
-		JButton btnExpiryReminder = new JButton("Expiry Reminder");
+		JButton btnExpiryReminder = new JButton("EXPIRY REMINDER");
+		btnExpiryReminder.setFont(new Font("Arial", Font.BOLD, 20));
 		btnExpiryReminder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ExpiryReminder xr = new ExpiryReminder();
+				ExpiryReminderForStaff xr = new ExpiryReminderForStaff();
 				xr.main(null);
 				frame.setVisible(false);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.dispose();
 			}
 		});
-		btnExpiryReminder.setBounds(501, 364, 144, 34);
+		btnExpiryReminder.setBounds(473, 364, 259, 46);
 		frame.getContentPane().add(btnExpiryReminder);
 		
-		JButton btnQuantityReminder = new JButton("Quantity Reminder");
+		JButton btnQuantityReminder = new JButton("QUANTITY REMINDER");
+		btnQuantityReminder.setFont(new Font("Arial", Font.BOLD, 20));
 		btnQuantityReminder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				QuantityReminder qr = new QuantityReminder();
+				QuantityReminderForStaff qr = new QuantityReminderForStaff();
 				qr.main(null);
 				frame.setVisible(false);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.dispose();
 			}
 		});
-		btnQuantityReminder.setBounds(501, 420, 144, 34);
+		btnQuantityReminder.setBounds(473, 420, 259, 48);
 		frame.getContentPane().add(btnQuantityReminder);
 		
-		JButton btnChangePassword = new JButton("Change Password");
+		JButton btnChangePassword = new JButton("CHANGE PASSWORD");
+		btnChangePassword.setFont(new Font("Arial", Font.BOLD, 20));
 		btnChangePassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ChangePasswordFrameForStaff sd = new ChangePasswordFrameForStaff();
@@ -141,10 +151,11 @@ public class MenuFrameStaff {
 				frame.dispose();
 			}
 		});
-		btnChangePassword.setBounds(501, 488, 144, 34);
+		btnChangePassword.setBounds(473, 478, 259, 49);
 		frame.getContentPane().add(btnChangePassword);
 		
 		JButton btnExit = new JButton("LOG OUT");
+		btnExit.setFont(new Font("Arial", Font.BOLD, 20));
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int input = JOptionPane.showConfirmDialog(frame, "Are you sure to Log Out Staff ?","Confirmation",JOptionPane.OK_CANCEL_OPTION);
@@ -157,8 +168,13 @@ public class MenuFrameStaff {
 				}
 			}
 		});
-		btnExit.setBounds(501, 550, 144, 34);
+		btnExit.setBounds(473, 539, 259, 49);
 		frame.getContentPane().add(btnExit);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\dudha\\Downloads\\blurred-background-supermarket-products-shelf-can-be-use-as-background_35652-1850.png"));
+		lblNewLabel_1.setBounds(0, 0, 1191, 792);
+		frame.getContentPane().add(lblNewLabel_1);
 	}
 
 }

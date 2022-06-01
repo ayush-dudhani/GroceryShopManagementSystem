@@ -26,6 +26,10 @@ import java.util.Calendar;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import java.util.Calendar;
+import com.toedter.calendar.JDayChooser;
+import com.toedter.calendar.JMonthChooser;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 public class AddItemFrame {
 
 	private JFrame frame;
@@ -33,9 +37,6 @@ public class AddItemFrame {
 	private JTextField txtID;
 	private JTextField txtQuantity;
 	private JTextField txtPrice;
-	private JDateChooser dateMFG;
-	private JDateChooser dateEXP;
-	private JComboBox dropdownCategory;
 
 	/**
 	 * Launch the application.
@@ -68,103 +69,125 @@ public class AddItemFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 987, 743);
+		frame.setBounds(100, 100, 1191, 792);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Add Item");
+		JLabel lblNewLabel = new JLabel("ADD ITEM");
+		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		lblNewLabel.setBounds(355, 52, 122, 30);
+		lblNewLabel.setFont(new Font("Serif", Font.BOLD, 33));
+		lblNewLabel.setBounds(468, 51, 210, 42);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JLabel lblItemName = new JLabel("Item Name : ");
+		JLabel lblItemName = new JLabel("ITEM NAME :");
 		lblItemName.setHorizontalAlignment(SwingConstants.CENTER);
-		lblItemName.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblItemName.setBounds(276, 121, 122, 30);
+		lblItemName.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblItemName.setBounds(385, 142, 122, 30);
 		frame.getContentPane().add(lblItemName);
 		
 		txtName = new JTextField();
-		txtName.setBounds(417, 127, 111, 19);
+		txtName.setBounds(566, 146, 170, 27);
 		frame.getContentPane().add(txtName);
 		txtName.setColumns(10);
 		
-		JLabel lblItemID = new JLabel("Item ID :");
+		JLabel lblItemID = new JLabel("ITEM ID :");
 		lblItemID.setHorizontalAlignment(SwingConstants.CENTER);
-		lblItemID.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblItemID.setBounds(276, 172, 122, 30);
+		lblItemID.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblItemID.setBounds(385, 201, 122, 30);
 		frame.getContentPane().add(lblItemID);
 		
 		txtID = new JTextField();
 		txtID.setColumns(10);
-		txtID.setBounds(417, 178, 111, 19);
+		txtID.setBounds(566, 205, 170, 27);
 		frame.getContentPane().add(txtID);
 		
-		JLabel lblQuantity = new JLabel("Quantity :");
+		JLabel lblQuantity = new JLabel("QUANTITY :");
 		lblQuantity.setHorizontalAlignment(SwingConstants.CENTER);
-		lblQuantity.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblQuantity.setBounds(276, 217, 122, 30);
+		lblQuantity.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblQuantity.setBounds(385, 254, 122, 30);
 		frame.getContentPane().add(lblQuantity);
 		
 		txtQuantity = new JTextField();
 		txtQuantity.setColumns(10);
-		txtQuantity.setBounds(417, 223, 111, 19);
+		txtQuantity.setBounds(566, 258, 170, 27);
 		frame.getContentPane().add(txtQuantity);
 		
-		JLabel lblPrice = new JLabel("Price :");
+		JLabel lblPrice = new JLabel("PRICE :");
 		lblPrice.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPrice.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblPrice.setBounds(276, 269, 122, 30);
+		lblPrice.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblPrice.setBounds(385, 316, 122, 30);
 		frame.getContentPane().add(lblPrice);
 		
 		txtPrice = new JTextField();
 		txtPrice.setColumns(10);
-		txtPrice.setBounds(417, 275, 111, 19);
+		txtPrice.setBounds(566, 320, 170, 27);
 		frame.getContentPane().add(txtPrice);
 		
-		JLabel lblMfgDate = new JLabel("MFG Date :");
+		JDateChooser thisMFG = new JDateChooser();
+		thisMFG.setBounds(566, 377, 170, 27);
+		frame.getContentPane().add(thisMFG);
+		
+		JDateChooser thisEXP = new JDateChooser();
+		thisEXP.setBounds(566, 438, 170, 27);
+		frame.getContentPane().add(thisEXP);
+		
+		JLabel lblMfgDate = new JLabel("MFG DATE :");
 		lblMfgDate.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMfgDate.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblMfgDate.setBounds(276, 314, 122, 30);
+		lblMfgDate.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblMfgDate.setBounds(385, 377, 122, 30);
 		frame.getContentPane().add(lblMfgDate);
 		
-		JLabel lbleExpDate = new JLabel("EXP Date :");
+		JLabel lbleExpDate = new JLabel("EXP DATE :");
 		lbleExpDate.setHorizontalAlignment(SwingConstants.CENTER);
-		lbleExpDate.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbleExpDate.setBounds(276, 366, 122, 30);
+		lbleExpDate.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lbleExpDate.setBounds(385, 435, 122, 30);
 		frame.getContentPane().add(lbleExpDate);
 		
-		JLabel lblCategory = new JLabel("Category :");
+		JLabel lblCategory = new JLabel("CATEGORY :");
 		lblCategory.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCategory.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblCategory.setBounds(276, 416, 122, 30);
+		lblCategory.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblCategory.setBounds(385, 504, 122, 30);
 		frame.getContentPane().add(lblCategory);
 		
-		JDateChooser dateMFG = new JDateChooser();
-		dateMFG.setDateFormatString("yyyy-MM-d");
-		dateMFG.setBounds(417, 324, 111, 19);
-		frame.getContentPane().add(dateMFG);
-		
-		JDateChooser dateEXP = new JDateChooser();
-		dateEXP.setDateFormatString("yyyy-MM-d");
-		dateEXP.setBounds(417, 366, 111, 19);
-		frame.getContentPane().add(dateEXP);
-		
 		JComboBox dropdownCategory = new JComboBox();
+		dropdownCategory.setFont(new Font("Tahoma", Font.BOLD, 16));
 		dropdownCategory.setModel(new DefaultComboBoxModel(new String[] {"Dairy", "Cereals", "Cleaners", "Spices", "Snacks", "Others"}));
-		dropdownCategory.setBounds(417, 421, 111, 21);
+		dropdownCategory.setBounds(566, 506, 170, 27);
 		frame.getContentPane().add(dropdownCategory);
 		
 		JButton btnAdd = new JButton("ADD");
+		btnAdd.setFont(new Font("Tahoma", Font.BOLD, 23));
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				saveItem();
+					String item_name = txtName.getText();
+					String item_idStr = txtID.getText();
+					int item_id = Integer.parseInt(item_idStr);
+					String QuantityStr = txtQuantity.getText();
+					int Quantity = Integer.parseInt(QuantityStr);
+					String PriceStr = txtPrice.getText();
+					float Price = Float.parseFloat(PriceStr);
+//					String mfg = mfgDate.getText();
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			        String mfg = sdf.format(thisMFG.getDate());
+					String exp = sdf.format(thisEXP.getDate());
+					
+					String category = (String) dropdownCategory.getItemAt(dropdownCategory.getSelectedIndex());
+					
+					Item i  = new Item (item_id, item_name, Quantity, Price, mfg,exp, category);
+					
+					String str = crudRepo.saveItemtoDB(i);
+					
+					JOptionPane.showMessageDialog(null, str);
+					
+				
 			}
 		});
-		btnAdd.setBounds(448, 481, 85, 21);
+		btnAdd.setBounds(593, 597, 143, 56);
 		frame.getContentPane().add(btnAdd);
 		
-		JButton btnBack = new JButton("Back");
+		JButton btnBack = new JButton("BACK");
+		btnBack.setFont(new Font("Tahoma", Font.BOLD, 23));
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MenuFrame mf = new MenuFrame();
@@ -175,39 +198,22 @@ public class AddItemFrame {
 				
 			}
 		});
-		btnBack.setBounds(320, 481, 85, 21);
+		btnBack.setBounds(385, 597, 156, 56);
 		frame.getContentPane().add(btnBack);
-	}
-	
-	
-	private void saveItem() {
-		String item_name = txtName.getText();
-		String item_idStr = txtID.getText();
-		int item_id = Integer.parseInt(item_idStr);
-		String QuantityStr = txtQuantity.getText();
-		int Quantity = Integer.parseInt(QuantityStr);
-		String PriceStr = txtPrice.getText();
-		float Price = Float.parseFloat(PriceStr);
-		dateMFG.setCalendar(Calendar.getInstance());
-		dateEXP.setCalendar(Calendar.getInstance());
-		String mfg=null;
-		String exp=null;
-		if(dateMFG.getDate()!=null) {
-			mfg = new String ("" + dateMFG.getDate());
-		}
-		if(dateEXP.getDate()!=null) {
-			exp = new String ("" + dateEXP.getDate());
-		}
-		String category = (String) dropdownCategory.getItemAt(dropdownCategory.getSelectedIndex());
 		
-		Item i  = new Item (item_id, item_name, Quantity, Price, mfg,exp, category);
+		JLabel lblunique = new JLabel("Item ID must be unique");
+		lblunique.setHorizontalAlignment(SwingConstants.LEFT);
+		lblunique.setForeground(new Color(255, 0, 0));
+		lblunique.setBounds(621, 175, 143, 13);
+		frame.getContentPane().add(lblunique);
 		
-		String str = crudRepo.saveItemtoDB(i);
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\dudha\\Downloads\\updatd background.png"));
+		lblNewLabel_1.setBounds(0, 0, 1191, 792);
+		frame.getContentPane().add(lblNewLabel_1);
 		
-		JOptionPane.showMessageDialog(null, str);
+		
+		
 		
 	}
-	
-	
-
 }

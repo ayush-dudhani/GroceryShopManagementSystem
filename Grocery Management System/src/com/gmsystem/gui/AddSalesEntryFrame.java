@@ -27,6 +27,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextPane;
 import javax.swing.JTextArea;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class AddSalesEntryFrame {
 
@@ -66,44 +68,45 @@ public class AddSalesEntryFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1001, 746);
+		frame.setBounds(100, 100, 1191, 792);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("ADD SALES ENTRY");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(309, 30, 286, 32);
+		lblNewLabel.setBounds(427, 25, 286, 63);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JLabel lblItemId = new JLabel("Item ID :");
+		JLabel lblItemId = new JLabel("ITEM ID :");
+		lblItemId.setForeground(new Color(0, 0, 0));
 		lblItemId.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lblItemId.setHorizontalAlignment(SwingConstants.CENTER);
-		lblItemId.setBounds(172, 114, 178, 32);
+		lblItemId.setBounds(374, 185, 178, 32);
 		frame.getContentPane().add(lblItemId);
 		
-		JLabel lblItemName = new JLabel("Item Name :");
+		JLabel lblItemName = new JLabel("ITEM NAME :");
 		lblItemName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblItemName.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		lblItemName.setBounds(172, 309, 178, 32);
+		lblItemName.setBounds(393, 354, 178, 32);
 		frame.getContentPane().add(lblItemName);
 		
-		JLabel lblQuantitySold = new JLabel("Quantity Sold :");
+		JLabel lblQuantitySold = new JLabel("QUANTITY SOLD :");
 		lblQuantitySold.setHorizontalAlignment(SwingConstants.CENTER);
 		lblQuantitySold.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		lblQuantitySold.setBounds(172, 172, 178, 32);
+		lblQuantitySold.setBounds(393, 245, 178, 32);
 		frame.getContentPane().add(lblQuantitySold);
 		
-		JLabel lblTotalAmount = new JLabel("Total Amount :");
+		JLabel lblTotalAmount = new JLabel("TOTAL AMOUNT :");
 		lblTotalAmount.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTotalAmount.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		lblTotalAmount.setBounds(184, 480, 178, 32);
+		lblTotalAmount.setBounds(403, 528, 178, 32);
 		frame.getContentPane().add(lblTotalAmount);
 		
-		JLabel lblCategory = new JLabel("Category :");
+		JLabel lblCategory = new JLabel("CATEGORY :");
 		lblCategory.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCategory.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		lblCategory.setBounds(172, 369, 178, 32);
+		lblCategory.setBounds(403, 400, 178, 32);
 		frame.getContentPane().add(lblCategory);
 		
 		JButton btnBack = new JButton("BACK");
@@ -117,7 +120,7 @@ public class AddSalesEntryFrame {
 			}
 		});
 		btnBack.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		btnBack.setBounds(127, 40, 98, 32);
+		btnBack.setBounds(76, 43, 151, 41);
 		frame.getContentPane().add(btnBack);
 		
 		JButton btnNewButton = new JButton("ADD");
@@ -127,35 +130,35 @@ public class AddSalesEntryFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		btnNewButton.setBounds(287, 557, 204, 37);
+		btnNewButton.setBounds(486, 597, 204, 37);
 		frame.getContentPane().add(btnNewButton);
 		
 		txtID = new JTextField();
-		txtID.setBounds(384, 114, 178, 27);
+		txtID.setBounds(562, 189, 178, 27);
 		frame.getContentPane().add(txtID);
 		txtID.setColumns(10);
 		
 		txtName = new JTextField();
 		txtName.setEditable(false);
 		txtName.setColumns(10);
-		txtName.setBounds(384, 313, 178, 27);
+		txtName.setBounds(562, 358, 178, 27);
 		frame.getContentPane().add(txtName);
 		
 		txtQuantity = new JTextField();
 		txtQuantity.setColumns(10);
-		txtQuantity.setBounds(384, 176, 178, 27);
+		txtQuantity.setBounds(562, 249, 178, 27);
 		frame.getContentPane().add(txtQuantity);
 		
 		txtTotalAmount = new JTextField();
 		txtTotalAmount.setEditable(false);
 		txtTotalAmount.setColumns(10);
-		txtTotalAmount.setBounds(384, 484, 178, 27);
+		txtTotalAmount.setBounds(562, 532, 178, 27);
 		frame.getContentPane().add(txtTotalAmount);
 		
 		JLabel lblDate = new JLabel(datemilega());
 		lblDate.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDate.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		lblDate.setBounds(644, 25, 217, 47);
+		lblDate.setBounds(885, 39, 217, 47);
 		frame.getContentPane().add(lblDate);
 		
 		JButton btnGenerateAmount = new JButton("GENERATE AMOUNT");
@@ -166,13 +169,13 @@ public class AddSalesEntryFrame {
 			}
 		});
 		btnGenerateAmount.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		btnGenerateAmount.setBounds(287, 423, 204, 37);
+		btnGenerateAmount.setBounds(486, 460, 204, 37);
 		frame.getContentPane().add(btnGenerateAmount);
 		
 		txtCategory = new JTextField();
 		txtCategory.setEditable(false);
 		txtCategory.setColumns(10);
-		txtCategory.setBounds(384, 373, 178, 27);
+		txtCategory.setBounds(562, 404, 178, 27);
 		frame.getContentPane().add(txtCategory);
 		
 		JButton btnFind = new JButton("FIND");
@@ -192,7 +195,7 @@ public class AddSalesEntryFrame {
 			}
 		});
 		btnFind.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		btnFind.setBounds(287, 227, 204, 37);
+		btnFind.setBounds(486, 300, 204, 37);
 		frame.getContentPane().add(btnFind);
 		
 		JLabel lblInventory = new JLabel("");
@@ -200,6 +203,11 @@ public class AddSalesEntryFrame {
 		lblInventory.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInventory.setBounds(251, 274, 311, 29);
 		frame.getContentPane().add(lblInventory);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\dudha\\Downloads\\back 2.png"));
+		lblNewLabel_1.setBounds(-24, 0, 1191, 792);
+		frame.getContentPane().add(lblNewLabel_1);
 	}
 	public String datemilega() {
 	Date date = Calendar.getInstance().getTime();  

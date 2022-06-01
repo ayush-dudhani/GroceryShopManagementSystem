@@ -18,6 +18,11 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ChangePasswordFrameForStaff {
 
@@ -57,58 +62,66 @@ public class ChangePasswordFrameForStaff {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 993, 747);
+		frame.setBounds(100, 100, 1191, 792);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblChangePass = new JLabel("Change Password");
 		lblChangePass.setForeground(Color.RED);
 		lblChangePass.setHorizontalAlignment(SwingConstants.CENTER);
-		lblChangePass.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblChangePass.setBounds(299, 58, 329, 49);
+		lblChangePass.setFont(new Font("Arial", Font.BOLD, 24));
+		lblChangePass.setBounds(615, 65, 399, 49);
 		frame.getContentPane().add(lblChangePass);
 		
 		JLabel lblCurrentPassword = new JLabel("Current Password :");
-		lblCurrentPassword.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		lblCurrentPassword.setForeground(new Color(255, 0, 0));
+		lblCurrentPassword.setBackground(new Color(255, 0, 0));
+		lblCurrentPassword.setFont(new Font("Arial", Font.BOLD, 20));
 		lblCurrentPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCurrentPassword.setBounds(192, 163, 174, 49);
+		lblCurrentPassword.setBounds(584, 320, 200, 49);
 		frame.getContentPane().add(lblCurrentPassword);
 		
 		JLabel lblNewPassword = new JLabel("New Password :");
+		lblNewPassword.setForeground(new Color(255, 0, 0));
 		lblNewPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewPassword.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		lblNewPassword.setBounds(192, 259, 174, 49);
+		lblNewPassword.setFont(new Font("Arial", Font.BOLD, 20));
+		lblNewPassword.setBounds(584, 413, 200, 49);
 		frame.getContentPane().add(lblNewPassword);
 		
 		JLabel lblConfirmPassword = new JLabel("Confirm Password :");
+		lblConfirmPassword.setForeground(new Color(255, 0, 0));
 		lblConfirmPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblConfirmPassword.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		lblConfirmPassword.setBounds(192, 360, 174, 49);
+		lblConfirmPassword.setFont(new Font("Arial", Font.BOLD, 20));
+		lblConfirmPassword.setBounds(584, 508, 200, 49);
 		frame.getContentPane().add(lblConfirmPassword);
 		
 		passOld = new JPasswordField();
-		passOld.setBounds(397, 172, 221, 33);
+		passOld.setBounds(848, 329, 221, 33);
 		frame.getContentPane().add(passOld);
 		
 		passNew = new JPasswordField();
-		passNew.setBounds(397, 268, 221, 33);
+		passNew.setBounds(848, 422, 221, 33);
 		frame.getContentPane().add(passNew);
 		
 		txtNewPass = new JTextField();
-		txtNewPass.setBounds(397, 369, 221, 33);
+		txtNewPass.setBounds(848, 517, 221, 33);
 		frame.getContentPane().add(txtNewPass);
 		txtNewPass.setColumns(10);
 		
 		JButton btnConfirm = new JButton("CONFIRM");
+		btnConfirm.setFont(new Font("Arial", Font.BOLD, 16));
+		btnConfirm.setBackground(new Color(255, 0, 0));
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ChangePass("Staff");
 			}
 		});
-		btnConfirm.setBounds(492, 458, 145, 49);
+		btnConfirm.setBounds(869, 593, 145, 49);
 		frame.getContentPane().add(btnConfirm);
 		
 		JButton btnBack = new JButton("BACK");
+		btnBack.setFont(new Font("Arial", Font.BOLD, 16));
+		btnBack.setBackground(new Color(255, 0, 0));
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MenuFrameStaff mf = new MenuFrameStaff();
@@ -118,14 +131,19 @@ public class ChangePasswordFrameForStaff {
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
-		btnBack.setBounds(261, 458, 145, 49);
+		btnBack.setBounds(653, 593, 145, 49);
 		frame.getContentPane().add(btnBack);
 		
 		JLabel lblNewLabel = new JLabel("STAFF");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 24));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(382, 38, 158, 41);
+		lblNewLabel.setBounds(726, 33, 158, 41);
 		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\dudha\\Downloads\\undraw_Forgot_password_re_hxwm (1).png"));
+		lblNewLabel_1.setBounds(0, -12, 1191, 802);
+		frame.getContentPane().add(lblNewLabel_1);
 	}
 	
 	private void ChangePass(String str) {
@@ -156,5 +174,22 @@ public class ChangePasswordFrameForStaff {
 			JOptionPane.showMessageDialog(null, "Invalid Password !");
 		}
 		
+	}
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
 	}
 }

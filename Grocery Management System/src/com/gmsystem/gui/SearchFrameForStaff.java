@@ -25,6 +25,7 @@ import javax.swing.JTable;
 import javax.swing.JTabbedPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class SearchFrameForStaff {
 
@@ -39,6 +40,8 @@ public class SearchFrameForStaff {
 	private JTable table;
 	private JTextField textField;
 	private JButton btnBack;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
 	
 	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -66,15 +69,15 @@ public class SearchFrameForStaff {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1098, 541);
+		frame.setBounds(100, 100, 1191, 792);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		lblNewLabel = new JLabel("SEARCH");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 25));
 		lblNewLabel.setForeground(Color.RED);
-		lblNewLabel.setBounds(446, 10, 133, 17);
+		lblNewLabel.setBounds(455, 10, 153, 31);
 		frame.getContentPane().add(lblNewLabel);
 		
 		textName = new JTextField();
@@ -83,24 +86,24 @@ public class SearchFrameForStaff {
 		frame.getContentPane().add(textName);
 		textName.setColumns(10);
 		
-		JButton lblSearch = new JButton("Search");
+		JButton lblSearch = new JButton("SEARCH");
 		lblSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				searchItem();
 			}
 		});
-		lblSearch.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblSearch.setBounds(753, 66, 99, 26);
+		lblSearch.setFont(new Font("Arial", Font.BOLD, 16));
+		lblSearch.setBounds(753, 66, 107, 27);
 		frame.getContentPane().add(lblSearch);
 		
-		JLabel lblNameOfItem = new JLabel("Name Of Item :");
-		lblNameOfItem.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		JLabel lblNameOfItem = new JLabel("NAME OF ITEM :");
+		lblNameOfItem.setFont(new Font("Arial", Font.BOLD, 16));
 		lblNameOfItem.setForeground(new Color(0, 0, 0));
-		lblNameOfItem.setBounds(205, 66, 114, 26);
+		lblNameOfItem.setBounds(230, 64, 180, 26);
 		frame.getContentPane().add(lblNameOfItem);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(143, 168, 792, 295);
+		scrollPane.setBounds(143, 168, 807, 426);
 		frame.getContentPane().add(scrollPane);
 		
 		table = new JTable();
@@ -112,11 +115,12 @@ public class SearchFrameForStaff {
 		textField.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		textField.setForeground(Color.RED);
 		textField.setEditable(false);
-		textField.setBounds(373, 119, 266, 26);
+		textField.setBounds(398, 115, 345, 26);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		btnBack = new JButton("Back");
+		btnBack = new JButton("BACK");
+		btnBack.setFont(new Font("Arial", Font.BOLD, 16));
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MenuFrameStaff mf = new MenuFrameStaff();
@@ -126,8 +130,19 @@ public class SearchFrameForStaff {
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
-		btnBack.setBounds(69, 28, 106, 26);
+		btnBack.setBounds(69, 28, 114, 42);
 		frame.getContentPane().add(btnBack);
+		
+		lblNewLabel_1 = new JLabel("STAFF");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 18));
+		lblNewLabel_1.setBounds(1006, 0, 171, 42);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\dudha\\Downloads\\blurred-background-supermarket-products-shelf-can-be-use-as-background_35652-1850.png"));
+		lblNewLabel_2.setBounds(0, 0, 1191, 792);
+		frame.getContentPane().add(lblNewLabel_2);
 	}
 	
 	
